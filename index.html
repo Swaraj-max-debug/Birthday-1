@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Heena!</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff5f7;
+            --accent-color: #ff4d6d;
+            --secondary-color: #ffb3c1;
+            --text-dark: #590d22;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 450px;
+            padding: 40px 20px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(255, 77, 109, 0.15);
+            text-align: center;
+            border: 8px solid var(--secondary-color);
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent-color);
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .sub-text {
+            color: var(--text-dark);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .photo-stack {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .photo-stack img {
+            width: 140px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 4px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .photo-stack img:first-child { transform: rotate(-5deg); }
+        .photo-stack img:last-child { transform: rotate(5deg); }
+
+        .photo-stack img:hover {
+            transform: scale(1.1) rotate(0deg);
+            z-index: 10;
+        }
+
+        .message {
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .btn:hover {
+            background: #ff758f;
+            transform: scale(1.05);
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="floating-heart" style="top:10%; left:10%;">❤️</div>
+        <div class="floating-heart" style="top:20%; right:10%; animation-delay: 1s;">✨</div>
+
+        <div class="sub-text">JANUARY 6TH</div>
+        <h1>Happy Birthday Heena!</h1>
+        
+        <div class="photo-stack">
+            <img src="1000054275.jpg" alt="Heena 1">
+            <img src="1000054274.jpg" alt="Heena 2">
+        </div>
+
+        <p class="message">
+            "To a friend who makes every day brighter. <br>
+            Wishing you a year full of love, <br>adventure, and success!"
+        </p>
+
+        <button class="btn" onclick="celebrate()">Tap for a Surprise! 🎂</button>
+    </div>
+
+    <script>
+        // Start confetti on load
+        window.onload = celebrate;
+
+        function celebrate() {
+            var count = 200;
+            var defaults = {
+                origin: { y: 0.7 },
+                colors: ['#ff4d6d', '#ffb3c1', '#ffffff', '#ffd700']
+            };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
+            }
+
+            fire(0.25, { spread: 26, startVelocity: 55 });
+            fire(0.2, { spread: 60 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 45 });
+        }
+    </script>
+</body>
+</html>
